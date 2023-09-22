@@ -25,15 +25,15 @@ console.log(title, price);
               <h4 className="pizza-block__title">{title}</h4>
               <div className="pizza-block__selector">
                 <ul>
-                {
+                  {
                     types.map((typeId) => 
-                    <li onClick={() => setActiveType(typeId)} className={activeType === typeId ? 'active' : ''}>{typeNames[typeId]}</li>)
+                    <li key={typeId} onClick={() => setActiveType(typeId)} className={activeType === typeId ? 'active' : ''}>{typeNames[typeId]}</li>)
                   }
                 </ul>
                 <ul>
                   {
                     sizes.map((size, index) => 
-                    <li onClick={() => setActiveSize(index)} className={activeSize === index ? 'active' : ''}>{size} sm.</li>)
+                    <li key={size} onClick={() => setActiveSize(index)} className={activeSize === index ? 'active' : ''}>{size} sm.</li>)
                   }
                 </ul>
               </div>
