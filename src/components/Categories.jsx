@@ -13,8 +13,13 @@ const categories = [
   'Closed'
 ]
 
-const onClickCategory = (index) =>{
-  setActiveIndex(index);
+// axios.get("https://my-json-server.typicode.com/Greenfield-Taster/PizzasJSON")
+// .then(response =>{
+//   console.log(response);
+// });
+
+const onClickCategory =(index) =>{
+  setActiveIndex(index );
 };
 
     return (
