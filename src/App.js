@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
-import Categories from "./components/Categories";
-import Sort from "./components/Sort";
-import Skeleton from "./components/PizzaBlock/Skeleton";
-import PizzaBlock from "./components/PizzaBlock";
-
-import pizzas from "./assets/pizzas.json";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 import "./scss/app.scss";
 
@@ -17,16 +13,8 @@ function App() {
       <Header />
       <div className="content">
         <div className="container">
-          <div className="content__top">
-            <Categories />
-            <Sort />
-          </div>
-          <h2 className="content__title">All pizzas</h2>
-          <div className="content__items">
-            {pizzas.map((obj) => (
-              <Skeleton key={obj.id} {...obj} />
-            ))}
-          </div>
+          {/* <Home /> */}
+          <NotFound />
         </div>
       </div>
     </div>
