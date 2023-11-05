@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path="React-pizza/" element={<Home />} />;
             <Route path="/cart" element={<Cart />} />;
-            <Route path="/notFound" element={<NotFound />} />;
+            <Route path="*" element={<NotFound />} />;
           </Routes>
         </div>
       </div>

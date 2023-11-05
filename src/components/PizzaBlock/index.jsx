@@ -16,7 +16,8 @@ const [activeSize, setActiveSize] = React.useState(0);
 const typeNames = ['thin', 'traditional'];
 console.log(title, price);
     return(
-        <div className="pizza-block">
+        <div className='pizza-block-wrapper'>
+          <div className="pizza-block">
               <img
                 className="pizza-block__image"
                 src={imageUrl}
@@ -57,6 +58,7 @@ console.log(title, price);
                 </button>
               </div>
             </div>
+        </div>
     );
 }
 
