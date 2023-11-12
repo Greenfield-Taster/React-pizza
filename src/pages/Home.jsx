@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -9,7 +10,24 @@ import PizzaBlock from "../components/PizzaBlock";
 import pizzas from "../assets/pizzas.json";
 
 const Home = () => {
-  // const [isLoading, setLoading] = useState(true); // TODO make <content__items> check for skeleton or PizzaBlock
+  const [items, setItems] = React.useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  React.useEffect(() => {
+    axios
+      .get("https://pizzas-backend.azurewebsites.net/pizzas")
+      .then((response) => {
+        console.log("Pizza data", response);
+
+        setTimeout(() => {
+          setItems(response.data);
+          setIsLoading(false);
+        }, 100);
+      })
+      .catch((error) => {
+        console.log("Can`t connect to server: ", error);
+      });
+  }, []);
 
   return (
     <div className="container">
@@ -19,9 +37,9 @@ const Home = () => {
       </div>
       <h2 className="content__title">All pizzas</h2>
       <div className="content__items">
-        {pizzas.map((obj) => (
-          <PizzaBlock key={obj.id} {...obj} />
-        ))}
+        {isLoading
+          ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
+          : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
       </div>
     </div>
   );
