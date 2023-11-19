@@ -308,9 +308,14 @@ li{
         &:hover {
           background-color: darken($color: $gray-line, $amount: 90);
           border-color: darken($color: $gray-line, $amount: 90);
+          
 
           span {
             color: $gray-line;
+          }
+          a{
+            color: #fff;
+
           }
         }
 

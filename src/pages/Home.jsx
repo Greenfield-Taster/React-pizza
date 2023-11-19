@@ -27,6 +27,8 @@ const Home = () => {
       .catch((error) => {
         console.log("Can`t connect to server: ", error);
       });
+
+    window.scrollTo(0, 0);
   }, []);
 
   return (
