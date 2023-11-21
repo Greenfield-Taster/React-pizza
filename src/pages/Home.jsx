@@ -7,22 +7,21 @@ import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock";
 
-import pizzas from "../assets/pizzas.json";
-
 const Home = () => {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [categoryId, setCategoryId] = React.useState(0);
+  const [sortType, setSortType] = React.useState(0);
+
   React.useEffect(() => {
+    setIsLoading(true);
     axios
       .get("https://pizzas-backend.azurewebsites.net/pizzas")
       .then((response) => {
         console.log("Pizza data", response);
-
-        setTimeout(() => {
-          setItems(response.data);
-          setIsLoading(false);
-        }, 100);
+        setItems(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log("Can`t connect to server: ", error);
@@ -31,11 +30,16 @@ const Home = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  console.log(categoryId, sortType);
+
   return (
     <div className="container">
       <div className="content__top">
-        <Categories />
-        <Sort />
+        <Categories
+          value={categoryId}
+          onChangeCategory={(id) => setCategoryId(id)}
+        />
+        <Sort value={sortType} onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className="content__title">All pizzas</h2>
       <div className="content__items">
