@@ -32,6 +32,18 @@ const Home = () => {
 
   console.log(categoryId, sortType);
 
+  const filtredAndSortedPizzas = () => {
+    let filtredItems = [];
+
+    if (categoryId === 0) {
+      return items;
+    }
+    filtredItems = items.filter((item) => item.category === categoryId);
+    return filtredItems;
+  };
+
+  const sortedAndFilteredPizzas = filtredAndSortedPizzas();
+
   return (
     <div className="container">
       <div className="content__top">
@@ -45,7 +57,9 @@ const Home = () => {
       <div className="content__items">
         {isLoading
           ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-          : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
+          : sortedAndFilteredPizzas.map((obj) => (
+              <PizzaBlock key={obj._id} {...obj} />
+            ))}
       </div>
     </div>
   );
