@@ -33,12 +33,30 @@ const Home = () => {
   console.log(categoryId, sortType);
 
   const filtredAndSortedPizzas = () => {
-    let filtredItems = [];
+    let filtredItems = items;
 
     if (categoryId === 0) {
-      return items;
+      filtredItems = items;
+    } else {
+      filtredItems = items.filter((item) => item.category === categoryId);
     }
-    filtredItems = items.filter((item) => item.category === categoryId);
+
+    switch (sortType) {
+      case 0:
+        filtredItems = filtredItems.sort((a, b) => b.rating - a.rating);
+        break;
+      case 1:
+        filtredItems = filtredItems.sort((a, b) => a.price - b.price);
+        break;
+      case 2:
+        filtredItems = filtredItems.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
+        break;
+      default:
+        break;
+    }
+
     return filtredItems;
   };
 
