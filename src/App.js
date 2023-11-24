@@ -33,14 +33,14 @@ function App() {
         </button>
       </div>
 
-      {/* <Header />
+      <Header />
       <div className="content">
         <Routes>
           <Route path="React-pizza/" element={<Home />} />;
           <Route path="/cart" element={<Cart />} />;
           <Route path="*" element={<NotFound />} />;
         </Routes>
-      </div> */}
+      </div>
     </div>
   );
 }
