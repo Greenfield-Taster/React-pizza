@@ -1,5 +1,8 @@
 import React from "react";
+
 function Sort({ value, onChangeSort }) {
+  const sortRef = React.useRef();
+
   const [open, setOpen] = React.useState(false);
   // const [selected, setSelected] = React.useState(0);
   const list = ["Popular", "Price", "A-Z"];
@@ -10,8 +13,20 @@ function Sort({ value, onChangeSort }) {
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      const isClickInside = sortRef.current.contains(event.target);
+
+      if (!isClickInside) {
+        setOpen(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"
