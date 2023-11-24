@@ -19,10 +19,15 @@ function Sort({ value, onChangeSort }) {
 
       if (!isClickInside) {
         setOpen(false);
+        console.log("was click");
       }
     };
 
     document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   return (

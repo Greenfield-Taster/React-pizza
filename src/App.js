@@ -17,22 +17,6 @@ function App() {
   const dispatch = useDispatch();
   return (
     <div className="wrapper">
-      <div>
-        <button
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          Increment
-        </button>
-        <span>{count}</span>
-        <button
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          Decrement
-        </button>
-      </div>
-
       <Header />
       <div className="content">
         <Routes>

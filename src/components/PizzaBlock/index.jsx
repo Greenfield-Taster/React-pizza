@@ -1,18 +1,35 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../../redux/slices/cartSlice";
 
-function PizaBlock({ title, price, imageUrl, sizes, types }) {
+function PizaBlock({ id, title, price, imageUrl, sizes, types }) {
   const [pizzaCount, setPizzaCount] = React.useState(0);
-
-  const onClickAdd = () => {
-    setPizzaCount(pizzaCount + 1);
-    console.log(pizzaCount + 1);
-  };
-
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 
   const typeNames = ["thin", "traditional"];
-  console.log(title, price);
+  //  console.log(title, price);
+
+  const dispatch = useDispatch();
+
+  const cartItem = useSelector((state) =>
+    state.cart.items.find((obj) => obj.id === id)
+  );
+  console.log(cartItem);
+  const addedCount = cartItem ? cartItem.count : 0;
+
+  const onClickAdd = () => {
+    const item = {
+      id,
+      title,
+      price,
+      imageUrl,
+      type: typeNames[activeType],
+      size: activeSize,
+    };
+    dispatch(addItem(item));
+    console.log(item.title, item.price, item.type, item.size);
+  };
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
@@ -61,7 +78,7 @@ function PizaBlock({ title, price, imageUrl, sizes, types }) {
               />
             </svg>
             <span>Add</span>
-            <i>{pizzaCount}</i>
+            {addedCount > 0 && <i>{addedCount}</i>}
           </button>
         </div>
       </div>
