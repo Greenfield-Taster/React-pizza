@@ -20,6 +20,9 @@ const Cart = () => {
   if (items.length == 0) {
     return <CartEmpty />;
   }
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
   return (
     <div className="container conteiner--cart">
       <div className="cart">
@@ -106,7 +109,7 @@ const Cart = () => {
           <div className="cart__bottom-details">
             <span>
               {" "}
-              Total pizzas: <b>{items.length} шт.</b>{" "}
+              Total pizzas: <b>{totalCount} шт.</b>{" "}
             </span>
             <span>
               {" "}

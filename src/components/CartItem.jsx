@@ -4,11 +4,18 @@ import { useDispatch } from "react-redux";
 
 const CartItem = ({ id, title, type, size, price, count, imageUrl }) => {
   const dispatch = useDispatch();
+
   const onClickPlus = () => {
     dispatch(addItem({ id }));
   };
   const onClickMinus = () => {
-    dispatch(minusItem(id));
+    if (count > 1) {
+      dispatch(minusItem(id));
+    } else {
+      if (window.confirm("Are you sure you want to remove?")) {
+        dispatch(removeItem(id));
+      }
+    }
   };
   const onClickRemove = () => {
     if (window.confirm("Are you sure you want to remove?")) {
