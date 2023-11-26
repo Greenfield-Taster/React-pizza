@@ -8,6 +8,7 @@ import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock";
 import { setItems } from "../redux/slices/pizzaSlice";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -81,11 +82,14 @@ const Home = () => {
         <Sort value={sortType} onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className="content__title">All pizzas</h2>
+
       <div className="content__items">
         {isLoading
           ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
           : sortedAndFilteredPizzas.map((obj) => (
-              <PizzaBlock key={obj._id} {...obj} />
+              <Link to={`/React-pizza/${obj._id}`}>
+                <PizzaBlock {...obj} />
+              </Link>
             ))}
       </div>
     </div>
