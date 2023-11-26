@@ -17,7 +17,7 @@ const Cart = () => {
       dispatch(clearItems());
     }
   };
-  if (items.length == 0) {
+  if (items.length === 0) {
     return <CartEmpty />;
   }
 
