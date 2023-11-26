@@ -103,6 +103,32 @@ li{
       margin: 0;
     }
   }
+  .modalPizza{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    
+    .modalPizzaText{
+      text-align: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 40px;
+      display: inline-flex;
+    }
+    .modalPizzaImg img{
+     width: 390px; 
+
+     @media (max-width:450px) {
+      width: 290px;
+    }
+    }
+
+    @media (max-width:720px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }
 
 .cart {

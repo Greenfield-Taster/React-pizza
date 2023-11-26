@@ -4,7 +4,6 @@ import { addItem } from "../../redux/slices/cartSlice";
 import { Link } from "react-router-dom";
 
 function PizaBlock({ _id, id, title, price, imageUrl, sizes, types }) {
-  const [pizzaCount, setPizzaCount] = React.useState(0);
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 

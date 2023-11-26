@@ -25,18 +25,26 @@ const FullPizza = () => {
     fetchPizza();
   }, []);
 
-  // if (!pizza) {
-  //   return <div className="container">Loading...</div>;
-  // }
   return (
     <div className="container">
       <div className="contant__items">
         {pizza ? (
           <div>
-            <Link to="/React-pizza/" className="button button--black">
-              <span>Come back</span>
-            </Link>
-            <PizzaBlock key={pizza._id} {...pizza} />
+            <div>
+              <Link to="/React-pizza/" className="button button--black">
+                <span>Come back</span>
+              </Link>
+              <div className="modalPizza">
+                <div className="modalPizzaImg">
+                  <img src={pizza.imageUrl} alt="Pizza" />
+                </div>
+                <div className="modalPizzaText">
+                  <h1>{pizza.title}</h1>
+                  <h2>{pizza.price} ₴</h2>
+                </div>
+              </div>
+            </div>
+            {/* <PizzaBlock key={pizza._id} {...pizza} /> */}
           </div>
         ) : (
           <div className="cart cart--empty">
