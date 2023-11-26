@@ -86,11 +86,7 @@ const Home = () => {
       <div className="content__items">
         {isLoading
           ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-          : sortedAndFilteredPizzas.map((obj) => (
-              <Link to={`/React-pizza/${obj._id}`}>
-                <PizzaBlock {...obj} />
-              </Link>
-            ))}
+          : sortedAndFilteredPizzas.map((obj) => <PizzaBlock {...obj} />)}
       </div>
     </div>
   );

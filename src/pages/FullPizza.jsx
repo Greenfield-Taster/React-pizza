@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const FullPizza = () => {
   const { pizzaId } = useParams();
+
   const [pizza, setPizza] = React.useState();
 
   React.useEffect(() => {
@@ -17,24 +18,24 @@ const FullPizza = () => {
         setPizza(data);
         console.log(data);
       } catch (error) {
-        console.log("Pizza not found", error);
+        console.error("Error fetching pizza:", error);
       }
     }
 
     fetchPizza();
   }, []);
 
-  if (!pizza) {
-    return <div className="container">Loading...</div>;
-  }
+  // if (!pizza) {
+  //   return <div className="container">Loading...</div>;
+  // }
   return (
     <div className="container">
       <div className="contant__items">
         {pizza ? (
           <div>
-            {/* <Link to="/React-pizza/" className="button button--black">
+            <Link to="/React-pizza/" className="button button--black">
               <span>Come back</span>
-            </Link> */}
+            </Link>
             <PizzaBlock key={pizza._id} {...pizza} />
           </div>
         ) : (
@@ -52,5 +53,13 @@ const FullPizza = () => {
     </div>
   );
 };
+//   return (
+//     <div className="container">
+//       <div className="contant__items">
+//         {pizza && <PizzaBlock key={pizza._id} {...pizza} />}
+//       </div>
+//     </div>
+//   );
+// };
 
 export default FullPizza;

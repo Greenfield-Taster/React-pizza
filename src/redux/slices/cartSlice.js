@@ -13,7 +13,6 @@ export const cartSlice = createSlice({
       const findItem = state.items.find((obj) => obj.id === action.payload.id);
       if (findItem) {
         findItem.count++;
-        // state.items.push(action.payload);
       } else {
         state.items.push({ ...action.payload, count: 1 });
       }
