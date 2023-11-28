@@ -240,6 +240,15 @@ li{
       }
       @media (max-width:400px) {
         margin-left: 0px;
+
+        h3 {
+          
+          font-size: 17px;
+        }
+  
+        p {
+          font-size: 14px;
+        }
       }
     }
 
@@ -265,7 +274,9 @@ li{
       }
 
       @media (max-width:400px) {
-       
+        b {
+          font-size: 18px;
+        }
       }
     }
 
@@ -283,6 +294,11 @@ li{
 
       @media (max-width:430px) {
         width: 23%;
+      }
+      @media (max-width:400px) {
+        b {
+          font-size: 18px;
+        }
       }
     }
 
