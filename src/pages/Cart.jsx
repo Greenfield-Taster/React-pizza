@@ -109,7 +109,7 @@ const Cart = () => {
           <div className="cart__bottom-details">
             <span>
               {" "}
-              Total pizzas: <b>{totalCount} шт.</b>{" "}
+              Total pizzas: <b>{totalCount} pcs.</b>{" "}
             </span>
             <span>
               {" "}
