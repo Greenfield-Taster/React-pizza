@@ -208,6 +208,10 @@ li{
         width: 80px;
         height: 80px;
       }
+
+      @media (max-width:550px) {
+        display: none;
+      }
     }
 
     &-info {
@@ -215,6 +219,7 @@ li{
       flex-direction: column;
       justify-content: center;
       width: 40%;
+      margin-left: 15px;
 
       h3 {
         font-weight: bold;
@@ -227,6 +232,15 @@ li{
         font-size: 18px;
         color: #8d8d8d;
       }
+
+      @media (max-width: 560px) {
+        p{
+          width: 100%;
+        }
+      }
+      @media (max-width:400px) {
+        margin-left: 0px;
+      }
     }
 
     &-count {
@@ -234,6 +248,9 @@ li{
       align-items: center;
       justify-content: space-between;
       width: 13%;
+      gap: 10px;
+
+      width: 43%;
 
       &-minus {
         svg {
@@ -245,6 +262,10 @@ li{
 
       b {
         font-size: 22px;
+      }
+
+      @media (max-width:400px) {
+       
       }
     }
 
@@ -259,6 +280,10 @@ li{
         font-size: 22px;
         letter-spacing: 0.01em;
       }
+
+      @media (max-width:430px) {
+        width: 23%;
+      }
     }
 
     &-remove {
@@ -266,6 +291,7 @@ li{
       align-items: center;
       justify-content: flex-end;
       width: 4%;
+      margin-left: 5px;
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -291,6 +317,11 @@ li{
           background-color: darken($color: $gray-line, $amount: 80);
         }
       }
+
+
+       @media (max-width:430px) {
+        width: 10%;
+      }
     }
   }
 
@@ -309,6 +340,12 @@ li{
             color: $orange;
           }
         }
+      }
+
+      @media (max-width: 430px) {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
       }
     }
 
@@ -359,6 +396,16 @@ li{
         font-weight: 600;
         width: 210px;
         padding: 16px;
+
+      }
+
+      @media (max-width:500px) {
+        .go-back-btn {
+          width: 40%;
+        }
+        .pay-btn {
+          width: 40%;
+        }
       }
     }
   }
@@ -397,6 +444,15 @@ li{
       margin: 0 auto;
       font-weight: 600;
       font-size: 18px;
+    }
+
+    @media (max-width:580px) {
+      width: 100%;
+      padding: 10px;
+
+      img{
+        width: 200px;
+      }
     }
   }
 }
