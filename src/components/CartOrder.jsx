@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import orderedCartImg from "../assets/img/ordered-cart.jpg";
+// import orderedCartImg from "../assets/img/ordered-cart.jpg";
+import orderedCartImg from "../assets/img/ordered-cart.svg";
 
 const CartOrder = () => {
   return (
