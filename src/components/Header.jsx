@@ -33,7 +33,7 @@ function Header() {
         </Link>
 
         <div className="header__cart">
-          {pathname !== "/cart" && (
+          {pathname !== "/cart" && pathname !== "/cart/order" && (
             <Link to="/cart" className="button button--cart">
               <span>{totalPrice} ₴</span>
               <div className="button__delimiter"></div>

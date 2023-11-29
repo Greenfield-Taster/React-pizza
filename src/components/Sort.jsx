@@ -1,4 +1,5 @@
 import React from "react";
+import useOutsideClick from "../utils/useOutsideClick";
 
 function Sort({ value, onChangeSort }) {
   const sortRef = React.useRef();
@@ -13,22 +14,10 @@ function Sort({ value, onChangeSort }) {
     setOpen(false);
   };
 
-  React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      const isClickInside = sortRef.current.contains(event.target);
-
-      if (!isClickInside) {
-        setOpen(false);
-        console.log("was click");
-      }
-    };
-
-    document.body.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.body.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+  useOutsideClick(sortRef, () => {
+    setOpen(false);
+    console.log("was click");
+  });
 
   return (
     <div ref={sortRef} className="sort">

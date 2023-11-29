@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import CartEmpty from "../components/CartEmpty";
+// import CartOrder from "../components/CartOrder";
 import { useDispatch, useSelector } from "react-redux";
 import { clearItems } from "../redux/slices/cartSlice";
 
@@ -12,7 +13,7 @@ const Cart = () => {
   const onClickClear = () => {
     if (
       items.length > 0 &&
-      window.confirm("Are you sure you want to ckear the cart?")
+      window.confirm("Are you sure you want to clear the cart?")
     ) {
       dispatch(clearItems());
     }
@@ -20,7 +21,6 @@ const Cart = () => {
   if (items.length === 0) {
     return <CartEmpty />;
   }
-
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
   return (
@@ -117,8 +117,8 @@ const Cart = () => {
             </span>
           </div>
           <div className="cart__bottom-buttons">
-            <a
-              href="/"
+            <Link
+              to="/React-pizza/"
               className="button button--outline button--add go-back-btn"
             >
               <svg
@@ -137,12 +137,12 @@ const Cart = () => {
                 ></path>
               </svg>
 
-              <span>
-                <Link to="/React-pizza/">Come back</Link>
-              </span>
-            </a>
+              <span>Come back</span>
+            </Link>
             <div className="button pay-btn">
-              <span>Pay now</span>
+              <Link to="/cart/order">
+                <span onClick={() => dispatch(clearItems())}>Order now</span>
+              </Link>
             </div>
           </div>
         </div>

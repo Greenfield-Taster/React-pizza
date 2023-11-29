@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Cart from "./pages/Cart";
+import CartOrder from "./components/CartOrder";
 import FullPizza from "./pages/FullPizza";
 
 import "./scss/app.scss";
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="React-pizza/" element={<Home />} />;
           <Route path="/cart" element={<Cart />} />;
+          <Route path="/cart/order" element={<CartOrder />} />;
           <Route path="/React-pizza/:pizzaId" element={<FullPizza />} />;
           <Route path="*" element={<NotFound />} />;
         </Routes>
