@@ -471,4 +471,43 @@ li{
       }
     }
   }
+
+  &--order {
+    max-width: 400px;
+    margin: 0 auto;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      label {
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+        font-size: 16px;
+        
+
+        &:focus {
+          border-color: rgb(128, 128, 128);
+        }
+      }
+      .phoneForm{
+        label {
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+        input{
+          width: 400px;
+          height: 42px;
+        }
+      }
+    }
+  }
 }
