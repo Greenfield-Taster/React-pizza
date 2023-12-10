@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import axios from "axios";
 
 const CartOrder = () => {
   const {
@@ -14,6 +15,15 @@ const CartOrder = () => {
 
   const onSubmit = (data) => {
     console.log("Form submitted", data);
+
+    axios
+      .post("https://pizzas-backend.azurewebsites.net/users", data)
+      .then((response) => {
+        console.log("Server response:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error.response.data.message);
+      });
   };
 
   return (
@@ -60,6 +70,7 @@ const CartOrder = () => {
           <Controller
             control={control}
             name="phone"
+            placeholder="1 (702) 123-4567"
             rules={{ required: true }}
             render={({ field: { ref, ...field } }) => (
               <PhoneInput
@@ -78,9 +89,9 @@ const CartOrder = () => {
         </div>
         <input type="submit" />
       </form>
-      {/* <Link to="/cart/order-done/" className="button button--black">
-          <span>Submit</span>
-        </Link> */}
+    <div>
+      
+    </div>
     </div>
   );
 };
