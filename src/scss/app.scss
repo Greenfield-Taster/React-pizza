@@ -582,5 +582,53 @@ body {
         }
       }
     }
+    .pizza-order-container {
+      margin: 20px;
+      width: 100%;
+
+      .pizza-order-items {
+        background-color: #ccc;
+        align-items: center;
+        background: #f4f6f8;
+        border-radius: 25px;
+        width: 100%;
+
+        .pizza-order {
+          padding: 10px;
+          // margin-bottom: 20px;
+
+          h2 {
+            margin-bottom: 10px;
+          }
+
+          .pizza-info {
+            display: flex;
+            align-items: center;
+
+            border-bottom: 1px solid #e0e3e6;
+
+            justify-content: space-between;
+            padding: 20px 15px;
+            gap: 35px;
+            .selected-description-full {
+              width: 200px;
+
+              .selected-description {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+              }
+            }
+          }
+        }
+        .total-order-price {
+          display: flex;
+          justify-content: center;
+          padding: 15px 0;
+          align-items: center;
+          gap: 15px;
+        }
+      }
+    }
   }
 }

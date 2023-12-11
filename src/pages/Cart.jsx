@@ -141,7 +141,7 @@ const Cart = () => {
             </Link>
             <div className="button pay-btn">
               <Link to="/cart/order">
-                <span onClick={() => dispatch(clearItems())}>Order now</span>
+                <span>Order now</span>
               </Link>
             </div>
           </div>
