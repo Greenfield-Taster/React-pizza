@@ -514,6 +514,78 @@ body {
         }
 
         .form-group {
+          .delivery-info {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            gap: 15px;
+            justify-content: center;
+
+            .delivery-adress {
+              display: flex;
+              justify-content: space-between;
+              flex-direction: row;
+              align-items: center;
+
+              .house {
+                input {
+                  width: 80px;
+                }
+                label {
+                  margin-right: 10px;
+                }
+              }
+              .street {
+                input {
+                  width: 250px;
+                }
+                label {
+                  margin-right: 10px;
+                }
+              }
+            }
+          }
+          .pickup-info {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            gap: 15px;
+            justify-content: center;
+
+            .pickup-address {
+              label {
+                margin-left: 15px;
+              }
+            }
+          }
+
+          .deliveryButtons {
+            display: flex;
+            justify-content: space-between;
+
+            .deliveryType {
+              button {
+                display: inline-block;
+                background-color: #ffffff;
+                border-radius: 10px;
+                padding: 10px 20px;
+                min-width: 200px;
+                text-align: center;
+                cursor: pointer;
+                transition: background-color 0.15s ease-in-out,
+                  border-color 0.15s ease-in-out;
+                border: 1px solid #fe5f1e;
+                color: black;
+
+                b {
+                  font-size: 17px;
+                }
+              }
+              .active {
+                background-color: #fe5f1e;
+              }
+            }
+          }
           h2 {
             padding: 25px 0;
           }
@@ -550,6 +622,16 @@ body {
           color: rgb(243, 1, 1);
         }
 
+        .pickup-comment {
+          textarea {
+            width: 100%;
+            height: 100px;
+            resize: none;
+            outline: none;
+            padding: 10px 15px;
+            font-size: 18px;
+          }
+        }
         .pay-form {
           display: flex;
           flex-direction: column;

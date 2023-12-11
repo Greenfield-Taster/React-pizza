@@ -11,7 +11,7 @@ import googlePay from "../assets/img/googlepay_color.svg";
 import { clearItems } from "../redux/slices/cartSlice";
 
 const CartOrder = () => {
-  const { register, handleSubmit, formState, control } = useForm();
+  const { register, handleSubmit, formState, control, setValue } = useForm();
   const { errors } = formState;
 
   const dispatch = useDispatch();
@@ -20,6 +20,12 @@ const CartOrder = () => {
   const [selectedPayment, setSelectedPayment] = React.useState("");
   const [cartData, setCartData] = React.useState([]);
   const [formSubmitted, setFormSubmitted] = React.useState(false);
+  const [selectedTypeDelivery, setSelectedTypeDelivery] =
+    React.useState("delivery");
+
+  const handleTypeDeliveryChange = (value) => {
+    setSelectedTypeDelivery(value);
+  };
 
   const handlePaymentSelection = (paymentMethod) => {
     setSelectedPayment(paymentMethod);
@@ -150,33 +156,95 @@ const CartOrder = () => {
               </div>
               <div className="form-group">
                 <h2>Delivery Type</h2>
-                <div className="radio-options">
-                  <div>
-                    <input
-                      type="radio"
-                      id="delivery"
-                      {...register("deliveryType", {
-                        required: "Please select a delivery option",
-                      })}
-                      value="delivery"
-                    />
-                    <label htmlFor="delivery">🚚 Delivery</label>
+                <div className="deliveryButtons">
+                  <div className="deliveryType">
+                    <button
+                      onClick={() => {
+                        handleTypeDeliveryChange("delivery");
+                        setValue("deliveryType", "delivery");
+                      }}
+                      className={
+                        selectedTypeDelivery === "delivery" ? " active" : ""
+                      }
+                    >
+                      <b>🚚 Delivery</b>
+                    </button>
                   </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="pickup"
-                      {...register("deliveryType", {
-                        required: "Please select a delivery option",
-                      })}
-                      value="pickup"
-                    />
-                    <label htmlFor="pickup">🏠 Self-Pickup</label>
+                  <div className="deliveryType">
+                    <button
+                      onClick={() => {
+                        handleTypeDeliveryChange("pickup");
+                        setValue("deliveryType", "pickup");
+                      }}
+                      className={
+                        selectedTypeDelivery === "pickup" ? " active" : ""
+                      }
+                    >
+                      <b>🏠 Self-Pickup</b>
+                    </button>
                   </div>
                 </div>
-                {errors.deliveryType && (
-                  <p className="errorText">{errors.deliveryType.message}</p>
+
+                {selectedTypeDelivery === "delivery" ? (
+                  <div className="delivery-info">
+                    <label htmlFor="region">Region</label>
+                    <input
+                      type="text"
+                      id="region"
+                      placeholder="Region"
+                      {...register("region", {
+                        required: "Region is required",
+                      })}
+                    />
+                    {/* {errors.name && (
+                      <p className="errorText">{errors.street.message}</p>
+                    )} */}
+
+                    <div className="delivery-adress">
+                      <div className="street">
+                        <label htmlFor="streer">Street</label>
+                        <input
+                          type="text"
+                          id="street"
+                          placeholder="Street"
+                          {...register("street", {
+                            required: "street is required",
+                          })}
+                        />
+                        {/* {errors.name && (
+                          <p className="errorText">{errors.street.message}</p>
+                        )} */}
+                      </div>
+                      <div className="house">
+                        <label htmlFor="house">House</label>
+                        <input
+                          type="text"
+                          id="house"
+                          placeholder="House"
+                          {...register("house", {
+                            required: "house is required",
+                          })}
+                        />
+                        {/* {errors.name && (
+                          <p className="errorText">{errors.house.message}</p>
+                        )} */}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="pickup-info">
+                    <h3>Pickup details</h3>
+                    <p>Pickup address :</p>
+                    <div className="pickup-address">
+                      <input type="radio" defaultChecked />
+                      <label>Zaporizhzhia city, St. Govorukh 73</label>
+                    </div>
+                  </div>
                 )}
+              </div>
+              <label>Comment to the order</label>
+              <div className="pickup-comment">
+                <textarea type="text" {...register("comment")} />
               </div>
               <div className="pay-form">
                 <div className="pay-form-select">
