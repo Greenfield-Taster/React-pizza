@@ -510,6 +510,7 @@ body {
           input {
             width: 100%;
             height: 40px;
+            padding: 0 45px;
           }
         }
 
@@ -534,6 +535,13 @@ body {
                 label {
                   margin-right: 10px;
                 }
+
+                @media (max-width: 455px) {
+                  input {
+                    width: 100%;
+                    margin-top: 15px;
+                  }
+                }
               }
               .street {
                 input {
@@ -542,6 +550,19 @@ body {
                 label {
                   margin-right: 10px;
                 }
+
+                @media (max-width: 455px) {
+                  input {
+                    width: 100%;
+                    margin-top: 15px;
+                  }
+                }
+              }
+
+              @media (max-width: 455px) {
+                flex-direction: column;
+                gap: 15px;
+                align-items: start;
               }
             }
           }
@@ -564,6 +585,8 @@ body {
             justify-content: space-between;
 
             .deliveryType {
+              width: 100%;
+
               button {
                 display: inline-block;
                 background-color: #ffffff;
@@ -580,12 +603,23 @@ body {
                 b {
                   font-size: 17px;
                 }
+
+                @media (max-width: 550px) {
+                  width: 100%;
+                }
               }
               .active {
                 background-color: #fe5f1e;
               }
             }
+
+            @media (max-width: 550px) {
+              flex-direction: column;
+              gap: 15px;
+              align-items: center;
+            }
           }
+
           h2 {
             padding: 25px 0;
           }
@@ -669,8 +703,18 @@ body {
                 width: 86px;
               }
             }
+
+            @media (max-width: 550px) {
+              flex-direction: column;
+              gap: 20px;
+              align-items: center;
+            }
           }
         }
+      }
+      @media (max-width: 1140px) {
+        width: 80%;
+        padding-left: 20px;
       }
     }
     .user-order {
@@ -691,7 +735,7 @@ body {
 
           .pizza-order {
             padding: 10px;
-            // margin-bottom: 20px;
+            margin-bottom: 20px;
 
             h2 {
               margin-bottom: 10px;
@@ -706,6 +750,7 @@ body {
               justify-content: space-between;
               padding: 20px 15px;
               gap: 35px;
+
               .selected-description-full {
                 width: 200px;
 
@@ -715,6 +760,12 @@ body {
                   gap: 5px;
                 }
               }
+              @media (max-width: 520px) {
+                width: 100%;
+              }
+            }
+            @media (max-width: 520px) {
+              padding: 0;
             }
           }
           .total-order-price {
@@ -725,7 +776,23 @@ body {
             gap: 15px;
           }
         }
+
+        @media (max-width: 520px) {
+          margin: 0;
+        }
       }
+
+      @media (max-width: 520px) {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 1140px) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
     }
   }
 }
