@@ -159,6 +159,7 @@ const CartOrder = () => {
                 <div className="deliveryButtons">
                   <div className="deliveryType">
                     <button
+                      type="button"
                       onClick={() => {
                         handleTypeDeliveryChange("delivery");
                         setValue("deliveryType", "delivery");
@@ -172,6 +173,7 @@ const CartOrder = () => {
                   </div>
                   <div className="deliveryType">
                     <button
+                      type="button"
                       onClick={() => {
                         handleTypeDeliveryChange("pickup");
                         setValue("deliveryType", "pickup");
