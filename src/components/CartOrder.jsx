@@ -6,8 +6,8 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import CartOrderDone from "./CartOrderDone";
 
-import privatterminal from "../assets/img/privatterminal_color.png";
-import googlePay from "../assets/img/googlepay_color.svg";
+import privatterminal from "../assets/img/cash1.png";
+import googlePay from "../assets/img/terminal.png";
 import { clearItems } from "../redux/slices/cartSlice";
 
 const CartOrder = () => {
@@ -194,13 +194,8 @@ const CartOrder = () => {
                       type="text"
                       id="region"
                       placeholder="Region"
-                      {...register("region", {
-                        required: "Region is required",
-                      })}
+                      {...register("region")}
                     />
-                    {/* {errors.name && (
-                      <p className="errorText">{errors.street.message}</p>
-                    )} */}
 
                     <div className="delivery-adress">
                       <div className="street">
@@ -209,27 +204,17 @@ const CartOrder = () => {
                           type="text"
                           id="street"
                           placeholder="Street"
-                          {...register("street", {
-                            required: "street is required",
-                          })}
+                          {...register("street")}
                         />
-                        {/* {errors.name && (
-                          <p className="errorText">{errors.street.message}</p>
-                        )} */}
                       </div>
                       <div className="house">
-                        <label htmlFor="house">House</label>
+                        <label htmlFor="apartment ">Apartment </label>
                         <input
                           type="text"
-                          id="house"
-                          placeholder="House"
-                          {...register("house", {
-                            required: "house is required",
-                          })}
+                          id="apartment "
+                          placeholder="74 "
+                          {...register("apartment ")}
                         />
-                        {/* {errors.name && (
-                          <p className="errorText">{errors.house.message}</p>
-                        )} */}
                       </div>
                     </div>
                   </div>
