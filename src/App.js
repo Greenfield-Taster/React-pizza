@@ -9,8 +9,6 @@ import CartOrder from "./components/CartOrder";
 import FullPizza from "./pages/FullPizza";
 import CartOrderDone from "./components/CartOrderDone";
 
-import "./checkingURL/google8e91e9f270592a63.html";
-
 import "./scss/app.scss";
 
 function App() {
