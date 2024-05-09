@@ -1,9 +1,14 @@
 
 # Pizza Shop
 
-This site is my personal project, within which I applied my knowledge of React.js. Here, I also learned how to work with Redux Toolkit
+- Pizza Shop is a React SPA website which allows user to see the pizzas, filter them, add pizzas to basket and to create orders.
+- Data is loaded from the backend REST API.
+- Redux is used as a state manager.
+- Styling is done by using SASS.
+- Application is deployed to GitHub pages via GitHub actions. 
 
-
+> [!NOTE]
+> Retrieving data from backend for the first time might take up to 20 seconds due to free hosting plan.
 
 ## Screenshots
 
