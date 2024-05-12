@@ -42,7 +42,7 @@ const CartOrder = () => {
     console.log("Form submitted", data);
 
     await axios
-      .post("https://pizzas-backend.azurewebsites.net/users", data)
+      .post("https://pizzas-backend.azurewebsites.net/orders", data)
       .then((response) => {
         console.log("Server response:", response.data);
         finishSubmitting();
