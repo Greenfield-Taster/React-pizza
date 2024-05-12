@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 .header {
   border-bottom: 1px solid $gray-line;
@@ -8,13 +8,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    
-    @media(max-width: 645px){
+
+    .header__sector {
+      display: flex;
+      gap: 25px;
+
+      .profileIco img {
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 645px) {
       flex-direction: column;
 
-      .header__cart{
+      .header__sector {
         margin-top: 20px;
+        flex-direction: column;
+        gap: 7px;
+        align-items: center;
       }
     }
   }
