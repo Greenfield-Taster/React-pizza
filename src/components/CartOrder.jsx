@@ -39,6 +39,7 @@ const CartOrder = () => {
   const onSubmit = async (data) => {
     data.paymentMethod = selectedPayment;
     data.dataOfOrderedPizzas = cartData;
+    data.deliveryType = selectedTypeDelivery;
     console.log("Form submitted", data);
 
     await axios
