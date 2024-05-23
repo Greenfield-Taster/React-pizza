@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -8,6 +7,7 @@ import Cart from "./pages/Cart";
 import CartOrder from "./components/CartOrder";
 import FullPizza from "./pages/FullPizza";
 import CartOrderDone from "./components/CartOrderDone";
+import Profile from "./components/Profile/Profile";
 
 import "./scss/app.scss";
 
@@ -23,6 +23,7 @@ function App() {
           <Route path="/cart/order-done" element={<CartOrderDone />} />;
           <Route path="/React-pizza/:pizzaId" element={<FullPizza />} />;
           <Route path="*" element={<NotFound />} />;
+          <Route path="/profile" element={<Profile />} />;
         </Routes>
       </div>
     </div>
