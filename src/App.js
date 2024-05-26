@@ -4,9 +4,9 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Cart from "./pages/Cart";
-import CartOrder from "./components/CartOrder";
+import Order from "./pages/Order";
 import FullPizza from "./pages/FullPizza";
-import CartOrderDone from "./components/CartOrderDone";
+import OrderDone from "./components/OrderDone";
 import Profile from "./components/Profile/Profile";
 
 import "./scss/app.scss";
@@ -19,8 +19,8 @@ function App() {
         <Routes>
           <Route path="React-pizza/" element={<Home />} />;
           <Route path="/cart" element={<Cart />} />;
-          <Route path="/cart/order" element={<CartOrder />} />;
-          <Route path="/cart/order-done" element={<CartOrderDone />} />;
+          <Route path="/cart/order" element={<Order />} />;
+          <Route path="/cart/order-done" element={<OrderDone />} />;
           <Route path="/React-pizza/:pizzaId" element={<FullPizza />} />;
           <Route path="*" element={<NotFound />} />;
           <Route path="/profile" element={<Profile />} />;

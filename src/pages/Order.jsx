@@ -4,7 +4,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import CartOrderDone from "./CartOrderDone";
+import OrderDone from "../components/OrderDone";
 
 import privatterminal from "../assets/img/cash1.png";
 import googlePay from "../assets/img/terminal.png";
@@ -63,7 +63,7 @@ const CartOrder = () => {
   return (
     <div className="cart cart--order">
       {formSubmitted ? (
-        <CartOrderDone />
+        <OrderDone />
       ) : (
         <>
           <div className="user-order">
@@ -149,7 +149,6 @@ const CartOrder = () => {
                         autoFocus: true,
                       }}
                       country={"ua"}
-                      // onlyCountries={["ua"]}
                       countryCodeEditable={false}
                     />
                   )}
