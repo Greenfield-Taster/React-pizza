@@ -13,6 +13,11 @@
       display: flex;
       gap: 25px;
 
+      .signInButton {
+        display: flex;
+        align-items: center;
+      }
+
       .profileIco img {
         margin-top: 10px;
       }

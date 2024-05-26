@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 .button {
   display: inline-block;
@@ -8,7 +8,8 @@
   min-width: 100px;
   text-align: center;
   cursor: pointer;
-  transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+  transition: background-color $duration ease-in-out,
+    border-color $duration ease-in-out;
   border: 1px solid transparent;
   @include noselect();
 
@@ -143,6 +144,28 @@
     span {
       font-weight: 600;
       font-size: 16px;
+    }
+  }
+
+  &--signIn {
+    display: inline-block;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+    border: 1px solid #fe5f1e;
+    color: black;
+
+    b {
+      font-size: 17px;
+    }
+
+    @media (max-width: 550px) {
+      width: 100%;
     }
   }
 }

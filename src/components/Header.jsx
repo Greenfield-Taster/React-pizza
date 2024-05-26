@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logoSvg from "../assets/img/pizza-logo.svg";
 import { useSelector } from "react-redux";
 import profilePicture from "../assets/img/profile.png";
+import RegisterModal from "../modals/RegisterModal";
 
 function Header() {
   const { items, totalPrice } = useSelector((state) => state.cart);
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
-  const isMounted = React.useRef(false);
+  const isMounted = useRef(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const { pathname } = useLocation();
 
@@ -38,6 +40,18 @@ function Header() {
             pathname !== "/cart/order" &&
             pathname !== "/profile" && (
               <>
+                <div className="signInButton">
+                  <button
+                    className="button button--signIn"
+                    onClick={() => setIsOpenModal(true)}
+                  >
+                    Sign In
+                  </button>
+                  <RegisterModal
+                    isOpen={isOpenModal}
+                    onRequestClose={() => setIsOpenModal(false)}
+                  />
+                </div>
                 <Link className="profileIco" to="/profile">
                   <img src={profilePicture} width={47} height={47} />
                 </Link>

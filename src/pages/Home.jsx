@@ -8,7 +8,6 @@ import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock";
 import { setItems } from "../redux/slices/pizzaSlice";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -39,8 +38,6 @@ const Home = () => {
   React.useEffect(() => {
     fetchPizzas();
   }, []);
-
-  console.log(categoryId, sortType);
 
   const filtredAndSortedPizzas = () => {
     let filtredItems;
@@ -86,7 +83,9 @@ const Home = () => {
       <div className="content__items">
         {isLoading
           ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-          : sortedAndFilteredPizzas.map((obj) => <PizzaBlock {...obj} />)}
+          : sortedAndFilteredPizzas.map((obj) => (
+              <PizzaBlock key={obj._id} {...obj} />
+            ))}
       </div>
     </div>
   );
