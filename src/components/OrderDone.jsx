@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import orderedCartImg from "../assets/img/ordered-cart.svg";
 
-const CartOrderDone = () => {
+const OrderDone = () => {
   return (
     <div className="cart cart--empty">
       <h2>
@@ -20,4 +20,4 @@ const CartOrderDone = () => {
     </div>
   );
 };
-export default CartOrderDone;
+export default OrderDone;

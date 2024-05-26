@@ -10,7 +10,7 @@ import privatterminal from "../assets/img/cash1.png";
 import googlePay from "../assets/img/terminal.png";
 import { clearItems } from "../redux/slices/cartSlice";
 
-const CartOrder = () => {
+const Order = () => {
   const { register, handleSubmit, formState, control, setValue } = useForm();
   const { errors } = formState;
 
@@ -294,4 +294,4 @@ const CartOrder = () => {
   );
 };
 
-export default CartOrder;
+export default Order;
