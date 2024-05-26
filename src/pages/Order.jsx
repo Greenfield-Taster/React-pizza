@@ -139,7 +139,10 @@ const Order = () => {
                   control={control}
                   name="phone"
                   placeholder="1 (702) 123-4567"
-                  rules={{ required: true }}
+                  rules={{
+                    required: "Phone number is required",
+                    minLength: "12",
+                  }}
                   render={({ field: { ref, ...field } }) => (
                     <PhoneInput
                       {...field}
