@@ -52,6 +52,9 @@ function Header() {
                     onRequestClose={() => setIsOpenModal(false)}
                   />
                 </div>
+                <Link to="/admin-portal" className="adminLink">
+                  <h3>A</h3>
+                </Link>
                 <Link className="profileIco" to="/profile">
                   <img src={profilePicture} width={47} height={47} />
                 </Link>

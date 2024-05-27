@@ -18,6 +18,12 @@
         align-items: center;
       }
 
+      .adminLink {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
       .profileIco img {
         margin-top: 10px;
       }

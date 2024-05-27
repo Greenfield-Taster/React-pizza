@@ -9,6 +9,7 @@ import FullPizza from "./pages/FullPizza";
 import OrderDone from "./components/OrderDone";
 import Profile from "./components/Profile/Profile";
 import Register from "./pages/Register";
+import Admin from "./pages/Admin";
 
 import "./scss/app.scss";
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="*" element={<NotFound />} />;
           <Route path="/profile" element={<Profile />} />;
           <Route path="/register" element={<Register />} />;
+          <Route path="/admin-portal" element={<Admin />} />;
         </Routes>
       </div>
     </div>
