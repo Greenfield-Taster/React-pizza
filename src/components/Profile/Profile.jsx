@@ -54,7 +54,7 @@ function Profile() {
               {errors.name && (
                 <p className="errorText">{errors.name.message}</p>
               )}
-              <label htmlFor="surname">Surname</label>
+              <label htmlFor="surname">Surname*</label>
               <input
                 type="text"
                 id="surname"
@@ -63,7 +63,7 @@ function Profile() {
               {errors.surname && (
                 <p className="errorText">{errors.surname.message}</p>
               )}
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email*</label>
               <input
                 type="email"
                 id="email"

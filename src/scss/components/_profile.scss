@@ -39,14 +39,13 @@
     width: 100%;
     margin-left: 20px;
 
-    // Profile header styles
     .profileHeader {
       display: flex;
       flex-direction: row;
       margin-bottom: 20px;
 
       .profileChangeAvatar {
-        // Add styles for profile change avatar if needed
+        // Add styles for profile change avatar
       }
 
       .profileHeaderInfo {
@@ -54,7 +53,6 @@
       }
     }
 
-    // Profile form styles
     .profileForm {
       display: flex;
       flex-direction: column;
@@ -96,6 +94,68 @@
 
       button {
         margin-top: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1152px) {
+  .profile {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+
+    .profileNavigationSideBar {
+      width: 100%;
+      padding: 15px;
+
+      h2 {
+        padding-bottom: 20px;
+      }
+
+      nav ul {
+        li {
+          padding-bottom: 8px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .profileUserInfo {
+      margin-left: 0;
+
+      .profileHeader {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+
+        .profileHeaderInfo {
+          margin-left: 0;
+          text-align: center;
+        }
+      }
+
+      .profileForm {
+        label {
+          font-size: 14px;
+        }
+
+        input {
+          padding: 6px;
+          font-size: 14px;
+        }
+
+        .phoneForm {
+          input {
+            height: 35px;
+            padding: 0 35px;
+          }
+        }
+
+        button {
+          padding: 10px;
+          font-size: 14px;
+        }
       }
     }
   }

@@ -168,7 +168,9 @@ const Order = () => {
                         setValue("deliveryType", "delivery");
                       }}
                       className={
-                        selectedTypeDelivery === "delivery" ? " active" : ""
+                        selectedTypeDelivery === "delivery"
+                          ? "  button--delivery button_active"
+                          : " button--delivery"
                       }
                     >
                       <b>🚚 Delivery</b>
@@ -182,7 +184,9 @@ const Order = () => {
                         setValue("deliveryType", "pickup");
                       }}
                       className={
-                        selectedTypeDelivery === "pickup" ? " active" : ""
+                        selectedTypeDelivery === "pickup"
+                          ? "  button--delivery button_active"
+                          : " button--delivery"
                       }
                     >
                       <b>🏠 Self-Pickup</b>

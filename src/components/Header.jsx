@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import logoSvg from "../assets/img/pizza-logo.svg";
 import { useSelector } from "react-redux";
 import profilePicture from "../assets/img/profile.png";
-import RegisterModal from "../modals/RegisterModal";
+import LoginModal from "../modals/LoginModal";
 
 function Header() {
   const { items, totalPrice } = useSelector((state) => state.cart);
@@ -42,12 +42,12 @@ function Header() {
               <>
                 <div className="signInButton">
                   <button
-                    className="button button--signIn"
+                    className="button button_signIn"
                     onClick={() => setIsOpenModal(true)}
                   >
-                    Sign In
+                    <h4>Log In</h4>
                   </button>
-                  <RegisterModal
+                  <LoginModal
                     isOpen={isOpenModal}
                     onRequestClose={() => setIsOpenModal(false)}
                   />

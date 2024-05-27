@@ -8,6 +8,7 @@ import Order from "./pages/Order";
 import FullPizza from "./pages/FullPizza";
 import OrderDone from "./components/OrderDone";
 import Profile from "./components/Profile/Profile";
+import Register from "./pages/Register";
 
 import "./scss/app.scss";
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/React-pizza/:pizzaId" element={<FullPizza />} />;
           <Route path="*" element={<NotFound />} />;
           <Route path="/profile" element={<Profile />} />;
+          <Route path="/register" element={<Register />} />;
         </Routes>
       </div>
     </div>
