@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-pizza/static/css/main.6ee0f93c.css",
-    "main.js": "/React-pizza/static/js/main.1edf57bb.js",
+    "main.css": "/React-pizza/static/css/main.020c6d46.css",
+    "main.js": "/React-pizza/static/js/main.84124792.js",
     "static/media/ordered-cart.svg": "/React-pizza/static/media/ordered-cart.dd8211f013930dba301a8132ac1f3e50.svg",
     "static/media/welcomeMinion.jpg": "/React-pizza/static/media/welcomeMinion.075e7803eac637a84bad.jpg",
     "static/media/cash1.png": "/React-pizza/static/media/cash1.de104774ab289be49436.png",
@@ -9,11 +9,11 @@
     "static/media/googleIcon.png": "/React-pizza/static/media/googleIcon.9a0a1d0d6a046da122c8.png",
     "static/media/pizza-logo.svg": "/React-pizza/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/React-pizza/index.html",
-    "main.6ee0f93c.css.map": "/React-pizza/static/css/main.6ee0f93c.css.map",
-    "main.1edf57bb.js.map": "/React-pizza/static/js/main.1edf57bb.js.map"
+    "main.020c6d46.css.map": "/React-pizza/static/css/main.020c6d46.css.map",
+    "main.84124792.js.map": "/React-pizza/static/js/main.84124792.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ee0f93c.css",
-    "static/js/main.1edf57bb.js"
+    "static/css/main.020c6d46.css",
+    "static/js/main.84124792.js"
   ]
 }
