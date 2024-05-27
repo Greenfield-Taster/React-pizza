@@ -18,7 +18,7 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
     onRequestClose();
   };
 
-  const onSumbit = (data) => {
+  const onSubmit = (data) => {
     console.log("Form submitted", data);
     onRequestClose();
   };
@@ -38,7 +38,7 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
       <form
         className="registerModalForm"
         action="registerUser"
-        onSubmit={handleSubmit(onSumbit)}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <div className="block">
           <label htmlFor="name">Name</label>
