@@ -1,5 +1,22 @@
 @import "../variables";
 
+.registerWrap {
+  display: flex;
+  justify-content: space-between;
+
+  .minionPicture {
+    img {
+      width: 270px;
+    }
+  }
+
+  @media (max-width: 645px) {
+    .minionPicture {
+      display: none;
+    }
+  }
+}
+
 .profile {
   margin: 0 auto;
   display: flex;
