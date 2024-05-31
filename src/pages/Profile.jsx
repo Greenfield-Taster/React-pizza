@@ -2,7 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import AvatarEditor from "react-avatar-editor";
-import profileIcon from "../../assets/img/profile.png";
+import profileIcon from "../assets/img/profile.png";
 
 function Profile() {
   const { register, handleSubmit, formState, control, setValue } = useForm();

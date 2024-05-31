@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import PizzaBlock from "../components/PizzaBlock/index";
 import { Link } from "react-router-dom";
 
-const FullPizza = () => {
+const PizzaDescription = () => {
   const { pizzaId } = useParams();
 
   const [pizza, setPizza] = React.useState();
@@ -61,13 +61,5 @@ const FullPizza = () => {
     </div>
   );
 };
-//   return (
-//     <div className="container">
-//       <div className="contant__items">
-//         {pizza && <PizzaBlock key={pizza._id} {...pizza} />}
-//       </div>
-//     </div>
-//   );
-// };
 
-export default FullPizza;
+export default PizzaDescription;

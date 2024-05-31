@@ -73,3 +73,89 @@
     }
   }
 }
+
+.createPizzaWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.addPizzaBlockForm {
+  display: flex;
+  width: 550px;
+  height: auto;
+  border: 2px solid #f44336;
+  padding: 20px;
+  border-radius: 20px;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+
+    &:focus {
+      border-color: rgb(128, 128, 128);
+    }
+  }
+
+  .addPizzaBlockComponents {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    .price-rating {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .priceComponent {
+        display: flex;
+        // margin-top: 10px;
+        // margin-right: 15px;
+
+        input {
+          width: 90px;
+          height: 60px;
+        }
+      }
+
+      .retingComponent {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+
+    .leftComponents {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .imageUrl {
+        width: 200px;
+
+        input {
+          width: 200px;
+        }
+      }
+
+      .typesComponent,
+      .sizesComponent {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

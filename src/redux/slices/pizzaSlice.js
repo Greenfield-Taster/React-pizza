@@ -11,6 +11,7 @@ const pizzaSlice = createSlice({
     setItems(state, action) {
       state.items = action.payload;
     },
+    
   },
 });
 

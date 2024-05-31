@@ -1,51 +1,112 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Tooltip } from "react-tooltip";
+import PizzaForm from "../components/PizzaForm";
+import { setItems } from "../redux/slices/pizzaSlice";
 
 function Admin() {
-  const [pizzas, setPizzas] = useState([]);
-  const [showText, setShowText] = useState(false); //Add info box which explains [0,1] pizza`s type
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.pizza.items);
+
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [currentPizza, setCurrentPizza] = useState(null);
+
+  const defaultPizzaFormData = {
+    title: "",
+    price: 0,
+    imageURL: "",
+    rating: 0,
+  };
+
+  const fetchingPizza = async () => {
+    const { data } = await axios.get(
+      "https://pizzas-backend.azurewebsites.net/pizzas"
+    );
+    dispatch(setItems(data));
+  };
 
   useEffect(() => {
-    axios
-      .get("https://pizzas-backend.azurewebsites.net/pizzas")
-      .then((response) => {
-        setPizzas(response.data);
-      });
+    fetchingPizza();
   }, []);
 
   const handleDelete = (id) => {
-    axios
-      .delete(`https://pizzas-backend.azurewebsites.net/pizzas/${id}`)
-      .then(() => {
-        setPizzas(pizzas.filter((pizza) => pizza._id !== id));
-      });
+    // const { data } = axios.delete(
+    //   `https://pizzas-backend.azurewebsites.net/pizzas/${id}`
+    // );
+    // dispatch(setItems(data));
+    console.log("delete: ", id);
   };
 
-  const handleEdit = (id) => {
-    console.log(`Edit pizza with id: ${id}`);
+  const handleEdit = (pizza) => {
+    setCurrentPizza(pizza);
+    setIsFormVisible(true);
+    console.log(`Edit pizza with id: ${pizza}`);
+  };
+
+  const handleFormSubmit = async (data) => {
+    if (currentPizza) {
+      console.log("edited pizza", data._id);
+    } else {
+      console.log("new pizza", data);
+    }
+
+    setIsFormVisible(false);
+    setCurrentPizza(null);
+    fetchingPizza();
+  };
+
+  const sorting = (sortingType) => {
+    console.log(sortingType);
   };
 
   return (
     <div className="container">
+      <div className="createPizzaWrapper">
+        <div className="createNewPizza">
+          {isFormVisible && (
+            <PizzaForm
+              onSubmit={handleFormSubmit}
+              defaultValues={currentPizza || defaultPizzaFormData}
+            />
+          )}
+        </div>
+        <div className="createPizzaButton">
+          <button
+            className="button button--delivery"
+            onClick={() => {
+              setCurrentPizza(null);
+              setIsFormVisible(true);
+            }}
+          >
+            Create pizza
+          </button>
+        </div>
+      </div>
       <div className="adminTable">
         <table>
           <thead>
             <tr>
               <th className="imageUrlmain">imageUrl</th>
-              <th>Title</th>
-              <th>Types❗</th>
+              <th onClick={() => sorting("title")}>Title*</th>
+              <th>
+                Types <a id="anchorElementTypes">❗</a>
+                <Tooltip anchorSelect="#anchorElementTypes" place="top">
+                  0-thin 1-traditional
+                </Tooltip>
+              </th>
               <th>Sizes</th>
-              <th>Price</th>
+              <th onClick={() => sorting("price")}>Price*</th>
               <th>Category</th>
-              <th>Rating</th>
+              <th onClick={() => sorting("rating")}>Rating*</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {pizzas.map((pizza) => (
+            {items.map((pizza) => (
               <tr key={pizza._id}>
                 <td className="imageUrl">
-                  <div className="scrollable">{pizza.imageUrl}</div>
+                  <div>{pizza.imageUrl}</div>
                 </td>
                 <td>{pizza.title}</td>
                 <td>
@@ -66,7 +127,7 @@ function Admin() {
                 <td>{pizza.category}</td>
                 <td>{pizza.rating}</td>
                 <td>
-                  <button onClick={() => handleEdit(pizza._id)}>Edit</button>
+                  <button onClick={() => handleEdit(pizza)}>Edit</button>
                   <button onClick={() => handleDelete(pizza._id)}>
                     Delete
                   </button>
