@@ -15,7 +15,7 @@ function Admin() {
   const defaultPizzaFormData = {
     title: "",
     price: 0,
-    imageURL: "",
+    imageUrl: "",
     rating: 0,
   };
 
@@ -41,14 +41,13 @@ function Admin() {
   const handleEdit = (pizza) => {
     setCurrentPizza(pizza);
     setIsFormVisible(true);
-    console.log(`Edit pizza with id: ${pizza}`);
   };
 
   const handleFormSubmit = async (data) => {
     if (currentPizza) {
-      console.log("edited pizza", data._id);
+      console.log("edited pizza", data._id, data); // TODO: add PATCH endpoint
     } else {
-      console.log("new pizza", data);
+      console.log("new pizza", data); // TODO: add POST endpoint
     }
 
     setIsFormVisible(false);
@@ -85,9 +84,6 @@ function Admin() {
           </div>
         ) : (
           <div className="controlButtons">
-            <button onClick={handleFormSubmit} className="button ">
-              Save changes
-            </button>
             <button
               onClick={() => {
                 setIsFormVisible(false);

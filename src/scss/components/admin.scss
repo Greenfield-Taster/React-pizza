@@ -76,107 +76,111 @@
 
 .createPizzaWrapper {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  justify-content: center;
   margin-bottom: 20px;
-}
 
-.controlButtons {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
+  .controlButtons {
+    margin-left: 20px;
+  }
 }
 
 .addPizzaBlockForm {
   display: flex;
-  width: 550px;
-  height: auto;
-  border: 2px solid #f44336;
-  padding: 20px;
-  border-radius: 20px;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
 
-  label {
-    font-weight: bold;
-  }
-
-  input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    font-size: 16px;
-
-    &:focus {
-      border-color: rgb(128, 128, 128);
-    }
-  }
-
-  .addPizzaBlockTitle {
-    input {
-      text-align: center;
-    }
-  }
-
-  .addPizzaBlockComponents {
+  .addPizzaFormWrapper {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+    width: 550px;
+    height: auto;
+    border: 2px solid #f44336;
+    padding: 20px;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 
-    .price-rating {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+    label {
+      font-weight: bold;
+    }
 
-      .priceComponent {
-        display: flex;
-        // margin-top: 10px;
-        // margin-right: 15px;
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      font-size: 16px;
 
-        input {
-          width: 90px;
-          height: 60px;
-          text-align: center;
-        }
-      }
-
-      .retingComponent {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+      &:focus {
+        border-color: rgb(128, 128, 128);
       }
     }
 
-    .leftComponents {
+    .addPizzaBlockTitle {
+      input {
+        text-align: center;
+      }
+    }
+
+    .addPizzaBlockComponents {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
 
-      .imageURLComponent {
-        width: 300px;
+      .price-rating {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
 
-        input {
-          width: 100%;
+        .priceComponent {
+          display: flex;
+          // margin-top: 10px;
+          // margin-right: 15px;
+
+          input {
+            width: 90px;
+            height: 60px;
+            text-align: center;
+          }
+        }
+
+        .retingComponent {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
         }
       }
 
-      .typesComponent,
-      .sizesComponent {
+      .leftComponents {
         display: flex;
         flex-direction: column;
-        width: 200px;
+        gap: 15px;
 
-        label {
-          margin-bottom: 5px;
+        .imageURLComponent {
+          width: 300px;
+
+          input {
+            width: 100%;
+          }
         }
 
-        input {
-          width: 100%;
+        .typesComponent,
+        .sizesComponent {
+          display: flex;
+          flex-direction: column;
+          width: 200px;
+
+          label {
+            margin-bottom: 5px;
+          }
+
+          input {
+            width: 100%;
+          }
         }
       }
     }
