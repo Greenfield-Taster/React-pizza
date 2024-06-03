@@ -8,6 +8,7 @@ function PizzaForm({ onSubmit, defaultValues }) {
     formState: { errors },
     register,
     reset,
+    trigger,
   } = useForm({
     defaultValues,
   });
@@ -19,6 +20,8 @@ function PizzaForm({ onSubmit, defaultValues }) {
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+
+  console.log("default pizza form", defaultValues);
 
   return (
     <form
@@ -41,10 +44,10 @@ function PizzaForm({ onSubmit, defaultValues }) {
             <input
               placeholder="Image URL"
               type="url"
-              {...register("imageURL", { required: "ImageURL is required" })}
+              {...register("imageUrl", { required: "ImageURL is required" })}
             />
-            {errors.imageURL && (
-              <p className="errorText">{errors.imageURL.message}</p>
+            {errors.imageUrl && (
+              <p className="errorText">{errors.imageUrl.message}</p>
             )}
           </div>
 
@@ -88,7 +91,6 @@ function PizzaForm({ onSubmit, defaultValues }) {
           </div>
         </div>
       </div>
-      {/* <button type="submit">Add</button> */}
     </form>
   );
 }

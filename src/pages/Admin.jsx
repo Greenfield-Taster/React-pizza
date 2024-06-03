@@ -71,17 +71,34 @@ function Admin() {
             />
           )}
         </div>
-        <div className="createPizzaButton">
-          <button
-            className="button button--delivery"
-            onClick={() => {
-              setCurrentPizza(null);
-              setIsFormVisible(true);
-            }}
-          >
-            Create pizza
-          </button>
-        </div>
+        {!isFormVisible ? (
+          <div className="createPizzaButton">
+            <button
+              className="button button--delivery"
+              onClick={() => {
+                setCurrentPizza(null);
+                setIsFormVisible(true);
+              }}
+            >
+              Create pizza
+            </button>
+          </div>
+        ) : (
+          <div className="controlButtons">
+            <button onClick={handleFormSubmit} className="button ">
+              Save changes
+            </button>
+            <button
+              onClick={() => {
+                setIsFormVisible(false);
+                setCurrentPizza(null);
+              }}
+              className="button button--black"
+            >
+              Cancel
+            </button>
+          </div>
+        )}
       </div>
       <div className="adminTable">
         <table>
