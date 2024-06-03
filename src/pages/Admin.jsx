@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Tooltip } from "react-tooltip";
 import PizzaForm from "../components/PizzaForm";
 import { setItems } from "../redux/slices/pizzaSlice";
+import Skeleton from "../components/PizzaForm/Skeleton";
 
 function Admin() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.pizza.items);
 
+  const [isLoading, setIsLoading] = useState(true);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [currentPizza, setCurrentPizza] = useState(null);
 
@@ -24,6 +26,7 @@ function Admin() {
       "https://pizzas-backend.azurewebsites.net/pizzas"
     );
     dispatch(setItems(data));
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -56,7 +59,18 @@ function Admin() {
   };
 
   const sorting = (sortingType) => {
-    console.log(sortingType);
+    if (sortingType === "title") {
+      // dispatch(sortByTitle());
+      console.log(sortingType);
+    }
+    if (sortingType === "price") {
+      // dispatch(sortByPrice());
+      console.log(sortingType);
+    }
+    if (sortingType === "rating") {
+      // dispatch(sortByRating());
+      console.log(sortingType);
+    }
   };
 
   return (
@@ -96,60 +110,80 @@ function Admin() {
           </div>
         )}
       </div>
-      <div className="adminTable">
-        <table>
-          <thead>
-            <tr>
-              <th className="imageUrlmain">imageUrl</th>
-              <th onClick={() => sorting("title")}>Title*</th>
-              <th>
-                Types <a id="anchorElementTypes">❗</a>
-                <Tooltip anchorSelect="#anchorElementTypes" place="top">
-                  0-thin 1-traditional
-                </Tooltip>
-              </th>
-              <th>Sizes</th>
-              <th onClick={() => sorting("price")}>Price*</th>
-              <th>Category</th>
-              <th onClick={() => sorting("rating")}>Rating*</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((pizza) => (
-              <tr key={pizza._id}>
-                <td className="imageUrl">
-                  <div>{pizza.imageUrl}</div>
-                </td>
-                <td>{pizza.title}</td>
-                <td>
-                  <ul>
-                    {pizza.types.map((type, index) => (
-                      <li key={index}>{type}</li>
-                    ))}
-                  </ul>
-                </td>
-                <td>
-                  <ul>
-                    {pizza.sizes.map((size, index) => (
-                      <li key={index}>{size}</li>
-                    ))}
-                  </ul>
-                </td>
-                <td>{pizza.price}</td>
-                <td>{pizza.category}</td>
-                <td>{pizza.rating}</td>
-                <td>
-                  <button onClick={() => handleEdit(pizza)}>Edit</button>
-                  <button onClick={() => handleDelete(pizza._id)}>
-                    Delete
-                  </button>
-                </td>
+
+      {isLoading ? (
+        [...new Array(1)].map((_, index) => <Skeleton key={index} />)
+      ) : (
+        <div className="adminTable">
+          <table>
+            <thead>
+              <tr>
+                <th className="imageUrlmain">imageUrl</th>
+                <th
+                  style={{ cursor: "pointer" }}
+                  onClick={() => sorting("title")}
+                >
+                  Title*
+                </th>
+                <th>
+                  Types <a id="anchorElementTypes">❗</a>
+                  <Tooltip anchorSelect="#anchorElementTypes" place="top">
+                    0-thin 1-traditional
+                  </Tooltip>
+                </th>
+                <th>Sizes</th>
+                <th
+                  style={{ cursor: "pointer" }}
+                  onClick={() => sorting("price")}
+                >
+                  Price*
+                </th>
+                <th>Category</th>
+                <th
+                  style={{ cursor: "pointer" }}
+                  onClick={() => sorting("rating")}
+                >
+                  Rating*
+                </th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {items.map((pizza) => (
+                <tr key={pizza._id}>
+                  <td className="imageUrl">
+                    <div>{pizza.imageUrl}</div>
+                  </td>
+                  <td>{pizza.title}</td>
+                  <td>
+                    <ul>
+                      {pizza.types.map((type, index) => (
+                        <li key={index}>{type}</li>
+                      ))}
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      {pizza.sizes.map((size, index) => (
+                        <li key={index}>{size}</li>
+                      ))}
+                    </ul>
+                  </td>
+                  <td>{pizza.price}</td>
+                  <td>{pizza.category}</td>
+                  <td>{pizza.rating}</td>
+                  <td>
+                    <button onClick={() => handleEdit(pizza)}>Edit</button>
+                    <button onClick={() => handleDelete(pizza._id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
