@@ -59,18 +59,18 @@ function Admin() {
   };
 
   const sorting = (sortingType) => {
+    let sortedItems;
+
     if (sortingType === "title") {
-      // dispatch(sortByTitle());
-      console.log(sortingType);
+      sortedItems = [...items].sort((a, b) => a.title.localeCompare(b.title));
     }
     if (sortingType === "price") {
-      // dispatch(sortByPrice());
-      console.log(sortingType);
+      sortedItems = [...items].sort((a, b) => a.price - b.price);
     }
     if (sortingType === "rating") {
-      // dispatch(sortByRating());
-      console.log(sortingType);
+      sortedItems = [...items].sort((a, b) => b.rating - a.rating);
     }
+    dispatch(setItems(sortedItems));
   };
 
   return (
