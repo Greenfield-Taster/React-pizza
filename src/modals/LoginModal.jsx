@@ -4,6 +4,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import googleIcon from "../assets/img/googleIcon.png";
 
 Modal.setAppElement("#root");
@@ -20,7 +21,16 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
 
   const onSubmit = (data) => {
     console.log("Form submitted", data);
-    onRequestClose();
+
+    axios
+      .post("https://pizzas-identity.azurewebsites.net/api/users/login", data)
+      .then((response) => {
+        console.log("submit login", response.data);
+        onRequestClose();
+      })
+      .catch((errors) => {
+        console.log(errors);
+      });
   };
 
   return (
@@ -41,21 +51,11 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="block">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            {...register("name", { required: "Name is required" })}
-          />
-          {errors.name && <p className="errorText">{errors.name.message}</p>}
-        </div>
-
-        <div className="block">
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phoneNumber">Phone</label>
           <div className="phoneForm">
             <Controller
               control={control}
-              name="phone"
+              name="phoneNumber"
               placeholder="1 (702) 123-4567"
               rules={{
                 required: "Phone number is required",
@@ -75,7 +75,20 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
               )}
             />
           </div>
-          {errors.phone && <p className="errorText">{errors.phone.message}</p>}
+          {errors.phoneNumber && (
+            <p className="errorText">{errors.phoneNumbers.message}</p>
+          )}
+        </div>
+        <div className="block">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            {...register("password", { required: "Password is required" })}
+          />
+          {errors.password && (
+            <p className="errorText">{errors.password.message}</p>
+          )}
         </div>
 
         <div className="submitButton">

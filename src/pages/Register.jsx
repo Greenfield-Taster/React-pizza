@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
+import axios from "axios";
 import welcomeMinion from "../assets/img/welcomeMinion.jpg";
 
 function Register() {
@@ -9,6 +10,18 @@ function Register() {
 
   const onSubmit = (data) => {
     console.log("submitted", data);
+
+    axios
+      .post(
+        "https://pizzas-identity.azurewebsites.net/api/users/register",
+        data
+      )
+      .then((response) => {
+        console.log("submitted data", response.data);
+      })
+      .catch((errors) => {
+        console.log(errors);
+      });
   };
 
   return (
@@ -25,21 +38,16 @@ function Register() {
               action="editProfile"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <label htmlFor="name">Name</label>
+              <label htmlFor="username">Name</label>
               <input
                 type="text"
-                id="name"
-                {...register("name", { required: "Name is required" })}
+                id="username"
+                {...register("username", { required: "Username is required" })}
               />
               {errors.name && (
-                <p className="errorText">{errors.name.message}</p>
+                <p className="errorText">{errors.username.message}</p>
               )}
-              <label htmlFor="surname">Surname*</label>
-              <input type="text" id="surname" />
-              {errors.surname && (
-                <p className="errorText">{errors.surname.message}</p>
-              )}
-              <label htmlFor="email">Email*</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
@@ -59,11 +67,21 @@ function Register() {
               {errors.email && (
                 <p className="errorText">{errors.email.message}</p>
               )}
-              <label htmlFor="userPhoneNumber">Phone</label>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                {...register("password", { required: "Password is required" })}
+              />
+              {errors.password && (
+                <p className="errorText">{errors.password.message}</p>
+              )}
+
+              <label htmlFor="phoneNumber">Phone</label>
               <div className="phoneForm">
                 <Controller
                   control={control}
-                  name="phone"
+                  name="phoneNumber"
                   placeholder="1 (702) 123-4567"
                   rules={{ required: true }}
                   render={({ field: { ref, ...field } }) => (
@@ -80,6 +98,7 @@ function Register() {
                   )}
                 />
               </div>
+
               <button type="submit" className="button ">
                 Register
               </button>
