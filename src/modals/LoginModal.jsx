@@ -6,6 +6,8 @@ import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import googleIcon from "../assets/img/googleIcon.png";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/slices/userSlice";
 
 Modal.setAppElement("#root");
 
@@ -13,6 +15,7 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
   const { handleSubmit, control, formState, register } = useForm();
   const { errors } = formState;
   let [isOpenModal, setIsOpenModal] = useState(false);
+  const dispatch = useDispatch();
 
   const moveToRegisterPage = () => {
     setIsOpenModal(false);
@@ -26,6 +29,7 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
       .post("https://pizzas-identity.azurewebsites.net/api/users/login", data)
       .then((response) => {
         console.log("submit login", response.data);
+        dispatch(setUser(response.data));
         onRequestClose();
       })
       .catch((errors) => {

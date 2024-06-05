@@ -7,6 +7,7 @@ import welcomeMinion from "../assets/img/welcomeMinion.jpg";
 function Register() {
   const { register, handleSubmit, formState, control } = useForm();
   const { errors } = formState;
+  const [registerData, setRegisterData] = [null];
 
   const onSubmit = (data) => {
     console.log("submitted", data);
@@ -17,9 +18,10 @@ function Register() {
         data
       )
       .then((response) => {
+        setRegisterData(response.data);
         console.log("submitted data", response.data);
       })
-      .catch((errors) => {
+     .catch((errors) => {
         console.log(errors);
       });
   };

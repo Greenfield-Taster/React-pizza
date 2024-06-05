@@ -13,6 +13,9 @@ function Header() {
 
   const { pathname } = useLocation();
 
+  const user = useSelector((state) => state.user.user);
+  const isAdmin = useSelector((state) => state.user.isAdmin);
+
   React.useEffect(() => {
     if (isMounted.current) {
       const json = JSON.stringify(items);
@@ -40,24 +43,31 @@ function Header() {
             pathname !== "/cart/order" &&
             pathname !== "/profile" && (
               <>
-                <div className="signInButton">
-                  <button
-                    className="button button_signIn"
-                    onClick={() => setIsOpenModal(true)}
-                  >
-                    <h4>Log In</h4>
-                  </button>
-                  <LoginModal
-                    isOpen={isOpenModal}
-                    onRequestClose={() => setIsOpenModal(false)}
-                  />
-                </div>
-                <Link to="/admin-portal" className="adminLink">
-                  <h3>A</h3>
-                </Link>
-                <Link className="profileIco" to="/profile">
-                  <img src={profilePicture} width={47} height={47} />
-                </Link>
+                {!user ? (
+                  <div className="signInButton">
+                    <button
+                      className="button button_signIn"
+                      onClick={() => setIsOpenModal(true)}
+                    >
+                      <h4>Log In</h4>
+                    </button>
+                    <LoginModal
+                      isOpen={isOpenModal}
+                      onRequestClose={() => setIsOpenModal(false)}
+                    />
+                  </div>
+                ) : (
+                  <>
+                    {isAdmin && (
+                      <Link to="/admin-portal" className="adminLink">
+                        <h3>A</h3>
+                      </Link>
+                    )}
+                    <Link className="profileIco" to="/profile">
+                      <img src={profilePicture} width={47} height={47} />
+                    </Link>
+                  </>
+                )}
                 <Link to="/cart" className="button button--cart">
                   <span>{totalPrice} ₴</span>
                   <div className="button__delimiter"></div>
