@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Tooltip } from "react-tooltip";
-import PizzaForm from "../components/PizzaForm";
+import PizzaForm from "../components/PizzaForm/PizzaForm";
 import { setItems } from "../redux/slices/pizzaSlice";
 import Skeleton from "../components/PizzaForm/Skeleton";
 
@@ -19,6 +19,8 @@ function Admin() {
     price: 0,
     imageUrl: "",
     rating: 0,
+    sizes: [26, 30, 40],
+    types: [0, 1],
   };
 
   const fetchingPizza = async () => {
@@ -29,16 +31,44 @@ function Admin() {
     setIsLoading(false);
   };
 
+  const editPizzaRequest = async (data) => {
+    await axios
+      .put(`https://pizzas-backend.azurewebsites.net/pizzas/${data._id}`, data)
+      .then((response) => {
+        fetchingPizza();
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const addPizzaRequest = async (data) => {
+    await axios
+      .post("https://pizzas-backend.azurewebsites.net/pizzas", data)
+      .then((response) => {
+        fetchingPizza();
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     fetchingPizza();
   }, []);
 
-  const handleDelete = (id) => {
-    // const { data } = axios.delete(
-    //   `https://pizzas-backend.azurewebsites.net/pizzas/${id}`
-    // );
-    // dispatch(setItems(data));
-    console.log("delete: ", id);
+  const handleDelete = async (id) => {
+    await axios
+      .delete(`https://pizzas-backend.azurewebsites.net/pizzas/${id}`)
+      .then((response) => {
+        fetchingPizza();
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleEdit = (pizza) => {
@@ -47,10 +77,11 @@ function Admin() {
   };
 
   const handleFormSubmit = async (data) => {
+    setIsLoading(true);
     if (currentPizza) {
-      console.log("edited pizza", data._id, data); // TODO: add PATCH endpoint
+      editPizzaRequest(data);
     } else {
-      console.log("new pizza", data); // TODO: add POST endpoint
+      addPizzaRequest(data);
     }
 
     setIsFormVisible(false);
