@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 function PizzaForm({ onSubmit, defaultValues }) {
   const {
@@ -8,9 +8,22 @@ function PizzaForm({ onSubmit, defaultValues }) {
     formState: { errors },
     register,
     reset,
+    control,
   } = useForm({
     defaultValues,
   });
+
+  const {
+    fields: typeFields,
+    remove: removeType,
+    append: appendType,
+  } = useFieldArray({ control, name: "types" });
+
+  const {
+    fields: sizeFields,
+    remove: removeSize,
+    append: appendSize,
+  } = useFieldArray({ control, name: "sizes" });
 
   useEffect(() => {
     reset(defaultValues);
@@ -52,13 +65,48 @@ function PizzaForm({ onSubmit, defaultValues }) {
             <div className="typesComponent">
               <label>Types[]</label>
               <div>
-                <input placeholder="Types" type="text" />
+                {typeFields.map((item, index) => (
+                  <div key={item.id}>
+                    <input
+                      placeholder="Types"
+                      type="text"
+                      {...register(`types.${index}`)}
+                    />
+                    <button type="button" onClick={() => removeType(index)}>
+                      X
+                    </button>
+                  </div>
+                ))}
+                <button type="button" onClick={() => appendType("")}>
+                  Add Type
+                </button>
               </div>
             </div>
 
             <div className="sizesComponent">
               <label>Sizes[]</label>
-              <input placeholder="Size" type="text" />
+              <div>
+                {sizeFields.map((item, index) => (
+                  <div key={item.id}>
+                    <input
+                      placeholder="Size"
+                      type="text"
+                      {...register(`sizes.${index}`)}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        removeSize(index);
+                      }}
+                    >
+                      X
+                    </button>
+                  </div>
+                ))}
+                <button type="button" onClick={() => appendSize("")}>
+                  Add Size
+                </button>
+              </div>
             </div>
           </div>
 
