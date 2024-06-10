@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import welcomeMinion from "../assets/img/welcomeMinion.jpg";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const { register, handleSubmit, formState, control } = useForm();
-  const { errors } = formState;
-  const [registerData, setRegisterData] = [null];
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("submitted", data);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    axios
-      .post(
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(
         "https://pizzas-identity.azurewebsites.net/api/users/register",
         data
-      )
-      .then((response) => {
-        setRegisterData(response.data);
-        console.log("submitted data", response.data);
-      })
-     .catch((errors) => {
-        console.log(errors);
-      });
+      );
+      dispatch(setUser(response.data));
+      navigate("/React-pizza");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -44,7 +49,9 @@ function Register() {
               <input
                 type="text"
                 id="username"
-                {...register("username", { required: "Username is required" })}
+                {...register("username", {
+                  required: "Username is required",
+                })}
               />
               {errors.name && (
                 <p className="errorText">{errors.username.message}</p>
@@ -73,7 +80,9 @@ function Register() {
               <input
                 type="password"
                 id="password"
-                {...register("password", { required: "Password is required" })}
+                {...register("password", {
+                  required: "Password is required",
+                })}
               />
               {errors.password && (
                 <p className="errorText">{errors.password.message}</p>
