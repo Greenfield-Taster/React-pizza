@@ -200,4 +200,37 @@
   &_active {
     background-color: #fe5f1e;
   }
+
+  &--adminRemove {
+    display: inline-block;
+    min-width: 40px;
+    background-color: black;
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    padding: 5px 8px;
+    text-align: center;
+    transition: background-color $duration ease-in-out,
+      border-color $duration ease-in-out;
+    cursor: pointer;
+  }
+
+  &--adminAdd {
+    display: inline-block;
+    min-width: 70px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 5px 10px;
+
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+    border: 1px solid #fe5f1e;
+    color: black;
+
+    &:hover {
+      background-color: #fe5f1e;
+    }
+  }
 }

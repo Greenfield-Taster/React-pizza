@@ -16,11 +16,12 @@ function Admin() {
 
   const defaultPizzaFormData = {
     title: "",
-    price: 0,
+    price: "",
     imageUrl: "",
     rating: 0,
     sizes: [26, 30, 40],
     types: [0, 1],
+    category: "",
   };
 
   const fetchingPizza = async () => {

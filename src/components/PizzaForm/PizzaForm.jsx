@@ -68,16 +68,26 @@ function PizzaForm({ onSubmit, defaultValues }) {
                 {typeFields.map((item, index) => (
                   <div key={item.id}>
                     <input
-                      placeholder="Types"
+                      placeholder="0"
                       type="text"
                       {...register(`types.${index}`)}
                     />
-                    <button type="button" onClick={() => removeType(index)}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        removeType(index);
+                      }}
+                      className=" button--adminRemove"
+                    >
                       X
                     </button>
                   </div>
                 ))}
-                <button type="button" onClick={() => appendType("")}>
+                <button
+                  type="button"
+                  onClick={() => appendType("")}
+                  className="button--adminAdd"
+                >
                   Add Type
                 </button>
               </div>
@@ -89,7 +99,7 @@ function PizzaForm({ onSubmit, defaultValues }) {
                 {sizeFields.map((item, index) => (
                   <div key={item.id}>
                     <input
-                      placeholder="Size"
+                      placeholder="15"
                       type="text"
                       {...register(`sizes.${index}`)}
                     />
@@ -98,12 +108,17 @@ function PizzaForm({ onSubmit, defaultValues }) {
                       onClick={() => {
                         removeSize(index);
                       }}
+                      className=" button--adminRemove"
                     >
                       X
                     </button>
                   </div>
                 ))}
-                <button type="button" onClick={() => appendSize("")}>
+                <button
+                  type="button"
+                  onClick={() => appendSize("")}
+                  className="button--adminAdd"
+                >
                   Add Size
                 </button>
               </div>
@@ -113,12 +128,23 @@ function PizzaForm({ onSubmit, defaultValues }) {
           <div className="price-rating">
             <div className="priceComponent">
               <input
-                placeholder="Price"
+                placeholder="200"
                 type="text"
                 {...register("price", { required: "Price is required" })}
               />
               {errors.price && (
                 <p className="errorText">{errors.price.message}</p>
+              )}
+            </div>
+
+            <div className="categoryComponent">
+              <label>Category</label>{" "}
+              <input
+                placeholder="0"
+                {...register("category", { required: "Caregory is required" })}
+              />
+              {errors.category && (
+                <p className="errorText">{errors.category.message}</p>
               )}
             </div>
 
