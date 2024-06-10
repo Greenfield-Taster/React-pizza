@@ -62,7 +62,7 @@ function Profile() {
               <input
                 type="text"
                 id="name"
-                value={user.username}
+                defaultValue={user.username || ""}
                 {...register("name", { required: "Name is required" })}
               />
               {errors.name && (
@@ -72,7 +72,7 @@ function Profile() {
               <input
                 type="email"
                 id="email"
-                value={user.email}
+                defaultValue={user.email || ""}
                 placeholder="user@gmail.com"
                 {...register(
                   "email",
@@ -96,10 +96,10 @@ function Profile() {
                   name="phone"
                   placeholder="1 (702) 123-4567"
                   rules={{ required: true }}
+                  defaultValue={user.phoneNumber || ""}
                   render={({ field: { ref, ...field } }) => (
                     <PhoneInput
                       {...field}
-                      value={user.phoneNumber}
                       inputExtraProps={{
                         ref,
                         required: true,

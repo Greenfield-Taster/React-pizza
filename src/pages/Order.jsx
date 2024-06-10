@@ -100,26 +100,26 @@ const Order = () => {
               <input
                 type="text"
                 id="username"
-                value={user.username}
-                {...register("username", { required: "Name is required" })}
+                defaultValue={user.username || ""}
+                {...register(
+                  "username",
+                  { required: "Name is required" },
+                  {
+                    pattern: {
+                      value: /^[\wа-яА-ЯёЁ]+$/i,
+                      message: "Wrong creditals",
+                    },
+                  }
+                )}
               />
               {errors.username && (
                 <p className="errorText">{errors.username.message}</p>
-              )}
-              <label htmlFor="surname">Surname</label>
-              <input
-                type="text"
-                id="surname"
-                {...register("surname", { required: "Surname is required" })}
-              />
-              {errors.surname && (
-                <p className="errorText">{errors.surname.message}</p>
               )}
               <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
-                value={user.email}
+                defaultValue={user.email || ""}
                 placeholder="user@gmail.com"
                 {...register(
                   "email",
@@ -141,6 +141,7 @@ const Order = () => {
                 <Controller
                   control={control}
                   name="phone"
+                  defaultValue={user.phoneNumber || ""}
                   placeholder="1 (702) 123-4567"
                   rules={{
                     required: "Phone number is required",
@@ -149,7 +150,6 @@ const Order = () => {
                   render={({ field: { ref, ...field } }) => (
                     <PhoneInput
                       {...field}
-                      value={user.phoneNumber}
                       inputExtraProps={{
                         ref,
                         required: true,
