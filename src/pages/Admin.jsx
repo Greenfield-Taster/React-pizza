@@ -33,15 +33,18 @@ function Admin() {
   };
 
   const editPizzaRequest = async (data) => {
-    await axios
-      .put(`https://pizzas-backend.azurewebsites.net/pizzas/${data._id}`, data)
-      .then((response) => {
-        fetchingPizza();
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const { _id, ...modifiedData } = data;
+
+    try {
+      const response = await axios.put(
+        `https://pizzas-backend.azurewebsites.net/pizzas/${data._id}`,
+        modifiedData
+      );
+      fetchingPizza();
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const addPizzaRequest = async (data) => {
