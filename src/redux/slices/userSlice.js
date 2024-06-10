@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: null,
-  isAdmin: false,
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  isAdmin: JSON.parse(localStorage.getItem("user"))?.role === "Admin" || false,
 };
 
 const userSlice = createSlice({
@@ -11,11 +11,13 @@ const userSlice = createSlice({
   reducers: {
     setUser(state, action) {
       state.user = action.payload;
-      state.isAdmin = action.payload?.role === "admin";
+      state.isAdmin = action.payload?.role === "Admin";
     },
     clearUser: (state) => {
       state.user = null;
       state.isAdmin = false;
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
     },
   },
 });

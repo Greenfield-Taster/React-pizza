@@ -5,8 +5,9 @@ import "react-phone-input-2/lib/style.css";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import googleIcon from "../assets/img/googleIcon.png";
 import { useDispatch } from "react-redux";
+import { jwtDecode } from "jwt-decode";
+import googleIcon from "../assets/img/googleIcon.png";
 import { setUser } from "../redux/slices/userSlice";
 
 Modal.setAppElement("#root");
@@ -22,19 +23,44 @@ const LoginModal = ({ isOpen, onRequestClose }) => {
     onRequestClose();
   };
 
-  const onSubmit = (data) => {
-    console.log("Form submitted", data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        "https://pizzas-identity.azurewebsites.net/api/users/login",
+        data
+      );
+      const token = response.data.token;
+      const decodedToken = jwtDecode(token);
 
-    axios
-      .post("https://pizzas-identity.azurewebsites.net/api/users/login", data)
-      .then((response) => {
-        console.log("submit login", response.data);
-        dispatch(setUser(response.data));
-        onRequestClose();
-      })
-      .catch((errors) => {
-        console.log(errors);
-      });
+      console.log(decodedToken);
+
+      const userData = {
+        email:
+          decodedToken[
+            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+          ],
+        username:
+          decodedToken[
+            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+          ],
+        role: decodedToken[
+          "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+        ],
+        userId:
+          decodedToken[
+            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+          ],
+        phoneNumber: response.data.phoneNumber,
+      };
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(userData));
+
+      dispatch(setUser(userData));
+      onRequestClose();
+    } catch (error) {
+      console.log("login error", error);
+    }
   };
 
   return (
