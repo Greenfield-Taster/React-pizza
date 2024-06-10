@@ -16,6 +16,7 @@ const Order = () => {
 
   const dispatch = useDispatch();
   const { totalPrice } = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user.user) || {};
 
   const [selectedPayment, setSelectedPayment] = React.useState("");
   const [cartData, setCartData] = React.useState([]);
@@ -95,14 +96,15 @@ const Order = () => {
           <div className="checkout-order">
             <h1>Checkout</h1>
             <form action="quickOrder" onSubmit={handleSubmit(onSubmit)}>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="username">Name</label>
               <input
                 type="text"
-                id="name"
-                {...register("name", { required: "Name is required" })}
+                id="username"
+                value={user.username}
+                {...register("username", { required: "Name is required" })}
               />
-              {errors.name && (
-                <p className="errorText">{errors.name.message}</p>
+              {errors.username && (
+                <p className="errorText">{errors.username.message}</p>
               )}
               <label htmlFor="surname">Surname</label>
               <input
@@ -117,6 +119,7 @@ const Order = () => {
               <input
                 type="email"
                 id="email"
+                value={user.email}
                 placeholder="user@gmail.com"
                 {...register(
                   "email",
@@ -146,6 +149,7 @@ const Order = () => {
                   render={({ field: { ref, ...field } }) => (
                     <PhoneInput
                       {...field}
+                      value={user.phoneNumber}
                       inputExtraProps={{
                         ref,
                         required: true,

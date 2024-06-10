@@ -14,7 +14,7 @@ function Profile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.user) || {};
 
   const logOut = () => {
     dispatch(clearUser(user.userId));
